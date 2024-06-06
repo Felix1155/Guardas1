@@ -1,0 +1,51 @@
+git clone https://github.com/Felix1155/Guardas.git cd Guardas.git
+npx react-native init MaquiladoraApp
+cd GuardasApp
+git add .
+git commit -m "Initial commit with React Native project"
+git push origin main
+Guardas/
+├── .git/
+├── .gitignore
+├── README.md
+├── package.json
+├── node_modules/
+├── ios/
+├── android/
+├── app.json
+├── index.js
+└── src/
+    ├── screens/
+    │   ├── LoginScreen.js
+    │   ├── AreasScreen.js
+    │   ├── ChecklistScreen.js
+    │   └── FillChecklistScreen.js
+    ├── navigation/
+    │   └── AppNavigation.js
+    └── components/
+git checkout -b feature-authentication
+git add .
+git commit -m "Add authentication feature"
+git push origin feature-authentication
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - run: npm install
+    - run: npx react-native --version
+    - run: npx react-native build
